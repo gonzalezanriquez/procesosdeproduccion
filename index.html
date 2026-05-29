@@ -125,11 +125,10 @@
 
     .stage-area {
       position: relative;
-      min-height: 510px;
+      min-height: 680px;
       padding: 26px;
       overflow: hidden;
-      background:
-        linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
     }
 
     .stage-grid {
@@ -303,9 +302,6 @@
 
     .warning {
       position: absolute;
-      top: 160px;
-      left: 50%;
-      transform: translateX(-50%);
       background: var(--red);
       color: white;
       padding: 12px 18px;
@@ -315,6 +311,8 @@
       display: none;
       z-index: 10;
       box-shadow: 0 12px 26px rgba(255, 92, 92, 0.35);
+      max-width: 230px;
+      pointer-events: none;
     }
 
     .warning.show {
@@ -352,15 +350,78 @@
       transform: scale(1);
     }
 
-    .teacher-note {
+    .bottom-info {
       position: absolute;
       left: 26px;
       right: 26px;
       bottom: 26px;
+      z-index: 6;
+      display: grid;
+      gap: 12px;
+    }
+
+    .dashboard {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: 0 8px 18px rgba(70, 110, 150, 0.12);
+    }
+
+    .status {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: var(--green-soft);
+      border: 2px solid var(--green);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .status.problem-status {
+      background: var(--red-soft);
+      border-color: var(--red);
+    }
+
+    .status.solution-status {
+      background: var(--blue-soft);
+      border-color: var(--blue);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 6px 14px rgba(70, 110, 150, 0.08);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--blue);
+      font-size: 25px;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+
+    .metric small {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .teacher-note {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      z-index: 3;
     }
 
     .note-card {
@@ -377,60 +438,6 @@
       display: block;
       color: var(--blue);
       margin-bottom: 4px;
-    }
-
-    .dashboard {
-      border-top: 1px solid var(--border);
-      background: #fbfeff;
-      padding: 18px;
-    }
-
-    .status {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: var(--green-soft);
-      border: 2px solid var(--green);
-      font-weight: 800;
-      line-height: 1.35;
-      margin-bottom: 14px;
-    }
-
-    .status.problem-status {
-      background: var(--red-soft);
-      border-color: var(--red);
-    }
-
-    .status.solution-status {
-      background: var(--blue-soft);
-      border-color: var(--blue);
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .metric {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 13px;
-      text-align: center;
-      box-shadow: 0 6px 16px rgba(70, 110, 150, 0.08);
-    }
-
-    .metric span {
-      display: block;
-      color: var(--blue);
-      font-size: 28px;
-      font-weight: 900;
-      margin-bottom: 3px;
-    }
-
-    .metric small {
-      color: var(--muted);
-      font-weight: 700;
     }
 
     @media (max-width: 820px) {
@@ -454,7 +461,7 @@
       }
 
       .stage-area {
-        min-height: 820px;
+        min-height: 1080px;
         padding: 18px;
       }
 
@@ -491,7 +498,7 @@
         left: auto;
         right: 10%;
         top: 60px;
-        bottom: 170px;
+        bottom: 430px;
         width: 72px;
         height: auto;
       }
@@ -525,33 +532,14 @@
         padding: 10px 8px;
       }
 
-      .warning {
-        top: 330px;
-        left: auto;
-        right: 4%;
-        max-width: 150px;
-        transform: none;
-        font-size: 12px;
-      }
-
-      .warning.show {
-        animation: pulseMobile 0.8s infinite alternate;
-      }
-
-      @keyframes pulseMobile {
-        from {
-          transform: scale(1);
-        }
-        to {
-          transform: scale(1.04);
-        }
-      }
-
-      .teacher-note {
+      .bottom-info {
         left: 18px;
         right: 18px;
         bottom: 18px;
-        grid-template-columns: 1fr;
+      }
+
+      .dashboard {
+        padding: 12px;
       }
 
       .metrics {
@@ -559,7 +547,16 @@
       }
 
       .metric span {
-        font-size: 24px;
+        font-size: 23px;
+      }
+
+      .teacher-note {
+        grid-template-columns: 1fr;
+      }
+
+      .note-card {
+        font-size: 12px;
+        padding: 10px;
       }
     }
 
@@ -584,7 +581,19 @@
       }
 
       .metrics {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .status {
+        font-size: 13px;
+      }
+
+      .metric span {
+        font-size: 21px;
+      }
+
+      .metric small {
+        font-size: 11px;
       }
     }
   </style>
@@ -602,7 +611,7 @@
 
       <div class="controls">
         <button class="start" onclick="startProcess()">▶ Iniciar proceso</button>
-        <button class="problem" onclick="createProblem()">⚠ Generar bloqueo</button>
+        <button class="problem" onclick="createProblem()">⚠ Generar bloqueo aleatorio</button>
         <button class="solution" onclick="solveProblem()">🛠 Reasignar recursos</button>
         <button class="reset" onclick="resetProcess()">↺ Reiniciar</button>
       </div>
@@ -631,7 +640,7 @@
             <div class="stage-icon">🔧</div>
             <div>
               <h3>Ensamble</h3>
-              <small>Punto crítico del recorrido.</small>
+              <small>Unión de partes. Puede demorarse.</small>
             </div>
           </div>
 
@@ -656,8 +665,7 @@
         <div class="track" id="track"></div>
 
         <div class="warning" id="warning">
-          ⚠ BLOQUEO<br />
-          Ensamble demora el proceso.
+          ⚠ BLOQUEO
         </div>
 
         <div class="motion-layer" id="motionLayer"></div>
@@ -666,48 +674,50 @@
         <div class="helper" id="helper1">👤</div>
         <div class="helper" id="helper2">👤</div>
 
-        <div class="teacher-note">
-          <div class="note-card">
-            <strong>1. Flujo normal</strong>
-            Las etapas trabajan coordinadas y los productos avanzan.
+        <div class="bottom-info">
+          <div class="dashboard">
+            <div class="status" id="statusBox">
+              Estado: detenido. Presioná “Iniciar proceso”.
+            </div>
+
+            <div class="metrics">
+              <div class="metric">
+                <span id="countMoving">0</span>
+                <small>en circulación</small>
+              </div>
+
+              <div class="metric">
+                <span id="countStuck">0</span>
+                <small>acumulados</small>
+              </div>
+
+              <div class="metric">
+                <span id="countFinished">0</span>
+                <small>terminados</small>
+              </div>
+
+              <div class="metric">
+                <span id="speedState">Normal</span>
+                <small>capacidad</small>
+              </div>
+            </div>
           </div>
 
-          <div class="note-card">
-            <strong>2. Cuello de botella</strong>
-            Una etapa baja su capacidad y acumula productos pendientes.
-          </div>
+          <div class="teacher-note">
+            <div class="note-card">
+              <strong>1. Flujo normal</strong>
+              Las etapas trabajan coordinadas y los productos avanzan.
+            </div>
 
-          <div class="note-card">
-            <strong>3. Reasignación</strong>
-            Se refuerza la etapa crítica para recuperar la circulación.
-          </div>
-        </div>
-      </div>
+            <div class="note-card">
+              <strong>2. Cuello de botella</strong>
+              Una etapa baja su capacidad y acumula productos pendientes.
+            </div>
 
-      <div class="dashboard">
-        <div class="status" id="statusBox">
-          Estado: detenido. Presioná “Iniciar proceso”.
-        </div>
-
-        <div class="metrics">
-          <div class="metric">
-            <span id="countMoving">0</span>
-            <small>en circulación</small>
-          </div>
-
-          <div class="metric">
-            <span id="countStuck">0</span>
-            <small>acumulados</small>
-          </div>
-
-          <div class="metric">
-            <span id="countFinished">0</span>
-            <small>terminados</small>
-          </div>
-
-          <div class="metric">
-            <span id="speedState">Normal</span>
-            <small>capacidad de ensamble</small>
+            <div class="note-card">
+              <strong>3. Reasignación</strong>
+              Se refuerza la etapa crítica para recuperar la circulación.
+            </div>
           </div>
         </div>
       </div>
@@ -727,6 +737,14 @@
       document.getElementById("stage2"),
       document.getElementById("stage3"),
       document.getElementById("stage4")
+    ];
+
+    const stageNames = [
+      "Entrada",
+      "Corte",
+      "Ensamble",
+      "Control",
+      "Salida"
     ];
 
     const helpers = [
@@ -749,7 +767,11 @@
     let lastFrameTime = 0;
     let animationId = null;
 
-    const bottleneckProgress = 0.5;
+    let blockedStageIndex = 2;
+    let bottleneckProgress = 0.5;
+    let lastBlockedStageIndex = null;
+
+    const blockableStages = [1, 2, 3];
 
     function isMobileLayout() {
       return window.innerWidth <= 820;
@@ -790,7 +812,7 @@
     function pointAtProgress(progress) {
       const points = getTrackPoints();
       const totalSegments = points.length - 1;
-      const exact = Math.min(progress, 0.999) * totalSegments;
+      const exact = Math.min(Math.max(progress, 0), 0.999) * totalSegments;
       const index = Math.floor(exact);
       const local = exact - index;
 
@@ -839,7 +861,7 @@
       if (!running) return;
 
       if (blocked) {
-        stages[2].classList.add("active");
+        stages[blockedStageIndex].classList.add("active");
         return;
       }
 
@@ -863,6 +885,38 @@
       }
     }
 
+    function chooseRandomBlockedStage() {
+      let options = blockableStages.filter(stageIndex => stageIndex !== lastBlockedStageIndex);
+
+      if (options.length === 0) {
+        options = blockableStages;
+      }
+
+      const randomIndex = Math.floor(Math.random() * options.length);
+      const selectedStage = options[randomIndex];
+
+      lastBlockedStageIndex = selectedStage;
+      return selectedStage;
+    }
+
+    function updateBottleneckPosition() {
+      bottleneckProgress = blockedStageIndex / (stages.length - 1);
+    }
+
+    function moveWarningToBlockedStage() {
+      const target = pointAtProgress(bottleneckProgress);
+
+      warning.style.left = target.x + "px";
+      warning.style.top = Math.max(target.y - 135, 78) + "px";
+      warning.style.right = "auto";
+      warning.style.transform = "translateX(-50%)";
+
+      warning.innerHTML = `
+        ⚠ BLOQUEO<br>
+        <span>La etapa <strong>${stageNames[blockedStageIndex]}</strong> demora el proceso.</span>
+      `;
+    }
+
     function animate(timestamp) {
       if (!running) return;
 
@@ -875,8 +929,11 @@
         lastProductTime = timestamp;
       }
 
+      const queueStart = Math.max(bottleneckProgress - 0.25, 0.02);
+      const queueEnd = Math.min(bottleneckProgress + 0.03, 0.98);
+
       const queueCandidates = products
-        .filter(product => product.progress >= bottleneckProgress - 0.23 && product.progress <= bottleneckProgress + 0.03)
+        .filter(product => product.progress >= queueStart && product.progress <= queueEnd)
         .sort((a, b) => b.progress - a.progress);
 
       products.forEach(product => {
@@ -889,7 +946,7 @@
             const target = bottleneckProgress - queueIndex * 0.055;
 
             if (product.progress >= target) {
-              product.progress = Math.max(target, 0.05);
+              product.progress = Math.max(target, 0.04);
               product.stuck = true;
             } else {
               product.progress += product.speed * delta * 0.55;
@@ -950,11 +1007,19 @@
     function createProblem() {
       if (!running) startProcess();
 
+      blockedStageIndex = chooseRandomBlockedStage();
+      updateBottleneckPosition();
+
       blocked = true;
       solved = false;
 
-      stages[2].classList.add("blocked");
-      stages[2].classList.remove("fixed");
+      stages.forEach(stage => {
+        stage.classList.remove("blocked", "fixed");
+      });
+
+      stages[blockedStageIndex].classList.add("blocked");
+
+      moveWarningToBlockedStage();
 
       warning.classList.add("show");
       track.classList.add("paused");
@@ -965,7 +1030,10 @@
       });
 
       statusBox.className = "status problem-status";
-      statusBox.textContent = "Estado: cuello de botella. La etapa de ensamble pierde capacidad y los productos se acumulan.";
+      statusBox.textContent =
+        "Estado: cuello de botella en " +
+        stageNames[blockedStageIndex] +
+        ". Esa etapa pierde capacidad y los productos se acumulan antes de poder avanzar.";
 
       updateCounters();
     }
@@ -976,14 +1044,20 @@
       blocked = false;
       solved = true;
 
-      stages[2].classList.remove("blocked");
-      stages[2].classList.add("fixed");
+      stages.forEach(stage => {
+        stage.classList.remove("blocked");
+      });
+
+      stages[blockedStageIndex].classList.add("fixed");
 
       warning.classList.remove("show");
       track.classList.remove("paused");
 
       statusBox.className = "status solution-status";
-      statusBox.textContent = "Estado: recursos reasignados. Se refuerza la etapa crítica y el flujo vuelve a estabilizarse.";
+      statusBox.textContent =
+        "Estado: recursos reasignados en " +
+        stageNames[blockedStageIndex] +
+        ". Se refuerza la etapa crítica y el flujo vuelve a estabilizarse.";
 
       products.forEach(product => {
         product.stuck = false;
@@ -996,7 +1070,7 @@
     function moveHelpersToBottleneck() {
       const target = pointAtProgress(bottleneckProgress);
       const startX = 26;
-      const startY = area.clientHeight - 100;
+      const startY = area.clientHeight - 110;
 
       helpers.forEach((helper, index) => {
         helper.style.transition = "none";
@@ -1007,7 +1081,9 @@
 
         void helper.offsetWidth;
 
-        helper.style.transition = "left 0.9s ease, top 0.9s ease, opacity 0.25s ease, transform 0.25s ease";
+        helper.style.transition =
+          "left 0.9s ease, top 0.9s ease, opacity 0.25s ease, transform 0.25s ease";
+
         helper.style.opacity = "1";
         helper.classList.add("show");
 
@@ -1025,6 +1101,9 @@
       finished = 0;
       lastProductTime = 0;
       lastFrameTime = 0;
+      blockedStageIndex = 2;
+      bottleneckProgress = 0.5;
+      lastBlockedStageIndex = null;
 
       if (animationId) cancelAnimationFrame(animationId);
 
@@ -1051,6 +1130,10 @@
 
     window.addEventListener("resize", () => {
       drawProducts();
+
+      if (blocked) {
+        moveWarningToBlockedStage();
+      }
 
       if (solved) {
         moveHelpersToBottleneck();
